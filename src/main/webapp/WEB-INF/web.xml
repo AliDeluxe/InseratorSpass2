@@ -85,6 +85,15 @@
         <url-pattern>/anzeige_details</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>user_profile_servlet</servlet-name>
+        <servlet-class>de.unidue.inf.is.UserProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_profile_servlet</servlet-name>
+        <url-pattern>/user_profile</url-pattern>
+    </servlet-mapping>
+
     <!-- ******************************************************** -->
 
     <security-constraint>

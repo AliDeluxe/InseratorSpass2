@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +28,12 @@ public final class HauptseiteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Put the user list in request and let freemarker paint it.
-        String query;
         con = null;
         try {
-            con = DBUtil.getConnection("insdb");
-            query = "SELECT * FROM dbp47.anzeige";
-            Statement statement;
-            statement = con.createStatement();
-            ResultSet resultset = statement.executeQuery(query);
+            con = DBUtil.getExternalConnection("insdb");
+            String sqlAnzeigen = "SELECT * FROM dbp47.anzeige WHERE status = ?";
+            PreparedStatement preparedStatementAnzeigen = con.prepareStatement(sqlAnzeigen);
+            ResultSet resultset = preparedStatementAnzeigen.executeQuery(sqlAnzeigen);
 
 
 
@@ -57,6 +52,14 @@ public final class HauptseiteServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if(con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 

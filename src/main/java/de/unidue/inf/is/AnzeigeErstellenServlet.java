@@ -31,16 +31,14 @@ public final class AnzeigeErstellenServlet extends HttpServlet {
         if (gesetzt == false) { //TODO Falls was nicht richtig ist
             request.getRequestDispatcher("anzeige_erstellen.ftl").forward(request, response);
         } else {
-            System.out.println("dude" + gesetzt);
             request.setAttribute("titel", anzeige.getTitel());
             request.setAttribute("erstellungsdatum", anzeige.getErstellungsDatum().toString());
             request.setAttribute("benutzer", anzeige.getUser());
             request.setAttribute("preis", anzeige.getPreis());
             request.setAttribute("beschreibung", anzeige.getBeschreibung());
-
+            gesetzt = false;
             request.getRequestDispatcher("anzeige_details.ftl").forward(request, response);
         }
-
     }
 
     @Override
@@ -64,7 +62,7 @@ public final class AnzeigeErstellenServlet extends HttpServlet {
         con = null;
 
         try {
-            con = DBUtil.getConnection("insdb");
+            con = DBUtil.getExternalConnection("insdb");
             con.setAutoCommit(false);
             System.out.println("connected maybe");
 
@@ -88,6 +86,8 @@ public final class AnzeigeErstellenServlet extends HttpServlet {
                 anzeigeId = rs.getInt(1);
                 //System.out.println("Inserted ID -" + anzeigeId); // display inserted record
             }
+
+
 
             for (String kategorie: kategorien) {
                 final String statementKategorie = "INSERT INTO dbp47.HatKategorie VALUES(?,?)";

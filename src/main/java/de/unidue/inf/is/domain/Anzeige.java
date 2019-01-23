@@ -12,7 +12,7 @@ public final class Anzeige {
     private String[] kategorien;
     private Date erstellungsDatum;
     private String user;
-
+    private String status;
 
     public Anzeige() {
         this.titel = "404";
@@ -86,5 +86,13 @@ public final class Anzeige {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

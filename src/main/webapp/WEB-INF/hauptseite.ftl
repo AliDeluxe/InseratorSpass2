@@ -14,12 +14,16 @@
     <legend> <h4> <a href="anzeige_detail.ftl"> ${anzeige.titel} </a> </h4> </legend>
     <label>Preis: ${anzeige.preis} €<br /></label>
     <label>Erstellt am: ${anzeige.erstellungsDatum}<br />
-    <label>Ersteller: ${anzeige.user} <br />
+    <label>Ersteller: <a href="user_profile.ftl">${anzeige.user}</a> <br />
 
     </fieldset>
     <br>
 
    </#list>
+
+   <form name="neueAnzeige" action="/anzeige_erstellen" method="get">
+       <input type="submit" value="Neue Anzeige Erstellen" />
+       </form>
 
 </body>
 </html>

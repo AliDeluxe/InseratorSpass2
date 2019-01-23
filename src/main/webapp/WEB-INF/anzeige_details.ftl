@@ -9,24 +9,29 @@
     		<h1> Anzeige Details </h1>
     </div>
 
+    <fieldset style="width:270px">
+
+        <legend> <h4> ${titel} </h4> </legend>
+        <label>Preis: ${preis} €<br /></label>
+        <label>Erstellt am: ${erstellungsdatum}<br />
+        <label>Ersteller: <a href="user_profile.ftl">${benutzer}</a> <br />
+
+        </fieldset>
 
 
-    <h2> ${titel} <h2> <br>
-    <h5> Erstellt am: ${erstellungsdatum} von <a href="benutzer">${benutzer}</a> <br>
-    <h4> ${beschreibung} <br> <br>
-    <h2> ${preis} € <h2> <br>
+    <p> ${beschreibung} </p>
 
 
-  <form name="kaufen" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
+  <form name="kaufen" action="/anzeige_details" method="post">
+  <input type="submit" value="Kaufen" /> ${status}
   </form>
 
-  <form name="anzeige" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
+  <form name="editieren" action="/anzeige_editieren" method="get">
+  <input type="submit" value="Editieren" />
   </form>
 
-  <form name="anzeige" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
+  <form name="löschen" action="/anzeige_erstellen" method="post">
+  <input type="submit" value="Löschen" />
   </form>
 
 

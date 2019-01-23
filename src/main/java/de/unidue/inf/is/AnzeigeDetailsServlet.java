@@ -28,7 +28,7 @@ public final class AnzeigeDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+        request.getRequestDispatcher("anzeige_details.ftl").forward(request, response);
     }
 
 

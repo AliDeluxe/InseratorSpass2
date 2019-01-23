@@ -6,32 +6,27 @@
  
 <body>
     <div id="header">
-    		<h1> User Profile </h1>
+    		<h2>${username}</h2>
     </div>
 
+    <p> <h7><b>Name: </b>${name} </h7> <br>
+        <h7><b>Erstellt am: </b>${datum} </h7> <br>
+        <h7><b>${verkauft}</b> verkaufte(r) Artikel</h7></p>
 
 
-    <h2> ${titel} <h2> <br>
-    <h5> Erstellt am: ${erstellungsdatum} von <a href="benutzer">${benutzer}</a> <br>
-    <h4> ${beschreibung} <br> <br>
-    <h2> ${preis} € <h2> <br>
+    <#list anzeigeListe as anzeige>
 
+        <fieldset style="width:270px">
+        <legend> <h4> ${anzeige.titel} </h4> </legend>
+        <label>Preis: ${anzeige.preis} € <br /> </label>
+        <label>Erstellt am: ${anzeige.erstellungsDatum} <br />
+        <label> ${anzeige.status} <br />
 
-  <form name="kaufen" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
-  </form>
+        </fieldset>
+        <br>
 
-  <form name="anzeige" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
-  </form>
+       </#list>
 
-  <form name="anzeige" action="/anzeige_erstellen" method="post">
-  <input type="submit" value="Erstellen" />
-  </form>
-
-
-
- 
 
 </body>
 </html>
